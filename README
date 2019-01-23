@@ -1,0 +1,89 @@
+----- Data generation -----
+
+To allow me to cluster the documents had to use some NLP to find entities. To do this I used spaCy.
+
+spaCy is a free open-source library for Natural Language Processing in Python.
+
+https://spacy.io
+
+The code in cluster.py uses spacy to loop through each document and find entities. This entity information is the appened to the original TSV from
+project one so that that data can be used to cluster in the UI.
+
+The entity recognistion is based on https://spacy.io/usage/linguistic-features#section-named-entities
+
+
+To generate the test data I did the following:
+
+it requires python (2.7) and pip to be installed.
+
+1. used pip to install spacy
+
+     $ pip install spacy
+
+2. Created the script and ran it in the root of the project
+
+     $ python cluster.py > Datasets/documents_clustered.tsv
+
+this creates the documents_clustered.tsv file. This will be read on line 36 of the workspace.js file.
+
+
+----- How the workspace was built -----
+
+The workspace starts by reading the file. Using the readFile method. This now groups the elements in columns based on the entities selected.
+
+Once the data is loaded the document browser is created. I still use JQuery to create the elements dynamically and used the built in Sortable
+API from JQuery which can be found here: https://jqueryui.com/sortable/ and also use Bootstrap to make the columns.
+
+The when a file is opened this is shown in the workspace. I used Bootstrap to help style the documents. Bootstrap is a popular CSS framework.
+The documents are made draggable using JQuery's draggable API which can be found here: https://jqueryui.com/draggable/
+
+
+----- MDS generation and TF IDF -----
+
+To allow us to create a plot I needed to generate an MDS plot. The high dimensional data generated is a TF IDF vector. This is a standard way
+of comparing document similarity.
+
+We then need to take that high dimensional data and change it into data that can be plotted in 2 dimensions.
+
+To achieve this we used:
+
+https://scikit-learn.org
+
+The code in mds.py firstly runs the spacy NLP entity recognise. Once these entities are found we will use these entities to paramterise the TF IDF analysis with the aim to improve results
+and means that files will be considered similar based on the entities and not other words in the document.
+
+Once we have the TF IDF vector this can be fed into the MDS analysis and the plot points are generated.
+
+To generate the plot data I did the following:
+
+it requires python (2.7) and pip to be installed.
+
+1. used pip to install sklearn
+
+     $ pip install sklearn
+
+2. Created the script and ran it in the root of the project
+
+     $ python mds.py > Datasets/documents_entity_tfidf.tsv
+
+this creates the documents_entity_tfidf.tsv file. This will be read on line 110 of the workspace.js file.
+
+
+----- How the plot was generated -----
+
+The plot used D3.js. This is generated from the data from the MDS analysis.
+
+The plot is made interactive by adding click and hover listens to each data point which carries out an action in the workspace.
+
+
+----- Starting the server ------
+
+1. Install NodeJS and npm
+
+2. in the project directory run:
+
+     $ npm i
+     $ npm start
+
+This will start a web server avalible in the browser at http://localhost:8080
+

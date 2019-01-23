@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rakesh Kumar - Project 1</title>
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- d3 libraries -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v2.min.js"></script>
+    <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+    <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+
+    <!-- project code -->
+    <link rel="stylesheet" href="workspace.css">
+    <script src="workspace.js"></script>
+</head>
+<body>
+
+<div class="container-fluid w-100 h-100">
+    <div class="row h-100">
+        <div id="file-sorter" class="col-4">
+            <h2>Document browser</h2>
+            <hr>
+            <h4 class="col-12 p-0">Documents containing:</h4>
+            <div id="sortable" class="row sortable-row ui-sortable">
+            </div>
+        </div>
+        <div id="workspace" class="col-4 h-100">
+            <h2>Document workspace <span id="close-all" class="pull-right btn btn-secondary">Close all</span></h2>
+            <hr>
+            <div id="containment-wrapper" class="w-100 bg-light">
+            </div>
+        </div>
+        <div id="plot" class="col-4 h-100">
+            <h2>Document Plot</h2>
+            <hr>
+            <div id="mds"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    init();
+</script>
+
+</body>
+</html>
